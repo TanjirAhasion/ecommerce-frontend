@@ -1,0 +1,65 @@
+<article class="product-card">
+  <a [routerLink]="['/product', product.slug]" class="product-card__media">
+    <img [src]="product.image" [alt]="product.name" loading="lazy" class="product-card__image product-card__image--primary" />
+    @if (product.hoverImage) {
+      <img [src]="product.hoverImage" [alt]="product.name" loading="lazy" class="product-card__image product-card__image--hover" />
+    }
+
+    <div class="product-card__badges">
+      @if (product.discountPercent) {
+        <span class="badge badge--sale">-{{ product.discountPercent }}%</span>
+      }
+      @if (product.isNew) {
+        <span class="badge badge--new">New</span>
+      }
+      @if (product.isBestSeller) {
+        <span class="badge badge--best">Best Seller</span>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="product-card__wishlist"
+      [class.is-active]="isWishlisted"
+      (click)="toggleWishlist($event)"
+      [attr.aria-pressed]="isWishlisted"
+      aria-label="Toggle wishlist"
+    >
+      <i class="bi" [class.bi-heart-fill]="isWishlisted" [class.bi-heart]="!isWishlisted"></i>
+    </button>
+
+    <button type="button" class="product-card__quick-view" (click)="openQuickView($event)">
+      Quick View
+    </button>
+  </a>
+
+  <div class="product-card__body">
+    @if (product.brandName) {
+      <p class="product-card__brand">{{ product.brandName }}</p>
+    }
+    <a [routerLink]="['/product', product.slug]" class="product-card__name">{{ product.name }}</a>
+
+    <app-rating [value]="product.rating" [reviewCount]="product.reviewCount" />
+
+    <div class="product-card__price">
+      <span class="product-card__price-current">
+        {{ currencySymbol }}{{ (product.salePrice ?? product.price) | number: '1.0-0' }}
+      </span>
+      @if (product.salePrice) {
+        <span class="product-card__price-original">{{ currencySymbol }}{{ product.price | number: '1.0-0' }}</span>
+      }
+    </div>
+
+    @if (product.colorSwatches?.length) {
+      <div class="product-card__swatches">
+        @for (swatch of product.colorSwatches; track swatch.label) {
+          <span class="swatch" [style.background]="swatch.colorHex" [attr.title]="swatch.label"></span>
+        }
+      </div>
+    }
+
+    <button type="button" class="btn-outline product-card__cta" (click)="addToCart($event)">
+      Add to Cart
+    </button>
+  </div>
+</article>

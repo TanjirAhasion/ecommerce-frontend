@@ -1,0 +1,119 @@
+<!-- Top announcement bar -->
+<div class="top-bar">
+  <div class="container top-bar__inner">
+    @for (msg of topBarMessages; track msg.text) {
+      <span class="top-bar__item">
+        <i [class]="'bi ' + msg.icon" aria-hidden="true"></i>
+        {{ msg.text }}
+      </span>
+    }
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container site-header__main">
+    <button
+      class="icon-btn site-header__burger"
+      type="button"
+      (click)="toggleMobileMenu()"
+      aria-label="Open menu"
+      [attr.aria-expanded]="mobileMenuOpen()"
+    >
+      <i class="bi bi-list" aria-hidden="true"></i>
+    </button>
+
+    <a routerLink="/" class="site-header__logo">Sahabi</a>
+
+    <div class="site-header__search" [class.is-focused]="searchFocused()">
+      <label for="site-search" class="visually-hidden">Search products</label>
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <input
+        id="site-search"
+        type="search"
+        placeholder="Search for products, brands and more..."
+        [value]="searchQuery()"
+        (input)="searchQuery.set($any($event.target).value)"
+        (focus)="searchFocused.set(true)"
+        (blur)="searchFocused.set(false)"
+      />
+      @if (searchFocused() && !searchQuery()) {
+        <div class="search-suggestions" role="listbox">
+          <p class="search-suggestions__label">Popular searches</p>
+          <ul>
+            @for (term of popularSearches; track term) {
+              <li><a [routerLink]="['/search']" [queryParams]="{ q: term }">{{ term }}</a></li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <div class="site-header__actions">
+      <a routerLink="/account" class="icon-btn" aria-label="Account">
+        <i class="bi bi-person" aria-hidden="true"></i>
+        <span class="icon-btn__label">Account</span>
+      </a>
+      <a routerLink="/wishlist" class="icon-btn" aria-label="Wishlist">
+        <i class="bi bi-heart" aria-hidden="true"></i>
+        @if (wishlistCount() > 0) {
+          <span class="icon-btn__badge">{{ wishlistCount() }}</span>
+        }
+      </a>
+      <a routerLink="/cart" class="icon-btn" aria-label="Cart">
+        <i class="bi bi-bag" aria-hidden="true"></i>
+        @if (cartCount() > 0) {
+          <span class="icon-btn__badge">{{ cartCount() }}</span>
+        }
+      </a>
+    </div>
+  </div>
+
+  <!-- Primary navigation / mega menu trigger -->
+  <nav class="site-nav" aria-label="Primary">
+    <ul class="container site-nav__list" (mouseleave)="closeMenu()">
+      @for (item of navItems; track item.label; let i = $index) {
+        <li
+          class="site-nav__item"
+          [class.has-mega]="item.megaMenu"
+          [class.is-highlight]="item.highlight"
+          (mouseenter)="item.megaMenu ? openMenu(i) : null"
+        >
+          <a
+            [routerLink]="item.routerLink"
+            [queryParams]="item.queryParams"
+            routerLinkActive="is-active"
+            [routerLinkActiveOptions]="{ exact: item.routerLink === '/' }"
+          >
+            {{ item.label }}
+            @if (item.megaMenu) {
+              <i class="bi bi-chevron-down" aria-hidden="true"></i>
+            }
+          </a>
+
+          @if (item.megaMenu && activeMenuIndex() === i) {
+            <app-mega-menu [menu]="item.megaMenu" (closeRequested)="closeMenu()" />
+          }
+        </li>
+      }
+    </ul>
+  </nav>
+</header>
+
+<!-- Mobile navigation drawer -->
+@if (mobileMenuOpen()) {
+  <div class="mobile-drawer-backdrop" (click)="toggleMobileMenu()"></div>
+  <aside class="mobile-drawer" role="dialog" aria-label="Site menu">
+    <button class="icon-btn mobile-drawer__close" type="button" (click)="toggleMobileMenu()" aria-label="Close menu">
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
+    <ul class="mobile-drawer__list">
+      @for (item of navItems; track item.label) {
+        <li>
+          <a [routerLink]="item.routerLink" [queryParams]="item.queryParams" (click)="toggleMobileMenu()">
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </aside>
+}

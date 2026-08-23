@@ -1,0 +1,25 @@
+<section class="newsletter-banner">
+  <div class="container newsletter-banner__inner">
+    <div>
+      <h2>Get 10% Off Your First Order</h2>
+      <p>Join the list for new arrivals, restocks, and members-only offers.</p>
+    </div>
+
+    @if (!submitted()) {
+      <form class="newsletter-banner__form" (submit)="$event.preventDefault(); onSubmit()">
+        <label for="home-newsletter-email" class="visually-hidden">Email address</label>
+        <input
+          id="home-newsletter-email"
+          type="email"
+          name="email"
+          placeholder="Your email address"
+          required
+          [(ngModel)]="email"
+        />
+        <button type="submit" class="btn-brand">Subscribe</button>
+      </form>
+    } @else {
+      <p class="newsletter-banner__success"><i class="bi bi-check-circle" aria-hidden="true"></i> Thanks — check your inbox for your code.</p>
+    }
+  </div>
+</section>

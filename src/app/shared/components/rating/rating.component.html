@@ -1,0 +1,14 @@
+<span class="rating" [class.rating--md]="size === 'md'" [attr.aria-label]="'Rated ' + stars().length + ' out of 5'">
+  @for (star of stars(); track $index) {
+    <i
+      class="bi"
+      [class.bi-star-fill]="star === 'full'"
+      [class.bi-star-half]="star === 'half'"
+      [class.bi-star]="star === 'empty'"
+      aria-hidden="true"
+    ></i>
+  }
+  @if (reviewCount !== undefined) {
+    <span class="rating__count">({{ reviewCount }})</span>
+  }
+</span>

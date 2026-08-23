@@ -1,0 +1,9 @@
+<section class="container special-offers">
+  @for (offer of offers; track offer.title) {
+    <a [routerLink]="offer.routerLink" [queryParams]="offer.queryParams" class="offer-card offer-card--{{ offer.tone }}">
+      <p class="offer-card__subtitle">{{ offer.subtitle }}</p>
+      <h3>{{ offer.title }}</h3>
+      <span class="offer-card__cta">Shop Now <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+    </a>
+  }
+</section>

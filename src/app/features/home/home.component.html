@@ -1,0 +1,36 @@
+<app-hero-banner />
+
+<app-category-showcase />
+
+<app-product-rail
+  title="New Arrivals"
+  subtitle="Just landed this week."
+  [products]="newArrivals"
+  viewAllLink="/shop"
+  [viewAllQueryParams]="{ filter: 'new' }"
+/>
+
+<app-product-rail
+  title="Best Sellers"
+  subtitle="What everyone's adding to cart."
+  [products]="bestSellers"
+  viewAllLink="/shop"
+  [viewAllQueryParams]="{ filter: 'best-seller' }"
+/>
+
+<app-featured-collection-banner />
+
+<app-product-rail
+  title="Trending Now"
+  subtitle="Highest rated by customers this month."
+  [products]="trending"
+  viewAllLink="/shop"
+/>
+
+<app-special-offers />
+
+<app-brand-strip />
+
+<app-testimonials />
+
+<app-newsletter-banner />

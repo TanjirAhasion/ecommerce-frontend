@@ -1,0 +1,42 @@
+.newsletter-banner {
+  background: var(--color-accent-tint);
+  padding-block: var(--space-7);
+}
+
+.newsletter-banner__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+
+  h2 {
+    margin-bottom: var(--space-2);
+  }
+  p {
+    margin: 0;
+  }
+}
+
+.newsletter-banner__form {
+  display: flex;
+  gap: var(--space-2);
+  min-width: 320px;
+
+  input {
+    flex: 1;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    font-size: var(--fs-small);
+  }
+}
+
+.newsletter-banner__success {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: var(--color-success);
+}

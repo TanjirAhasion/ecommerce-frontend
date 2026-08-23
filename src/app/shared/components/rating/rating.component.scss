@@ -1,0 +1,17 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: #E0A526;
+  font-size: 0.75rem;
+
+  &.rating--md {
+    font-size: 0.95rem;
+  }
+}
+
+.rating__count {
+  margin-left: 4px;
+  color: var(--color-muted);
+  font-size: 0.85em;
+}

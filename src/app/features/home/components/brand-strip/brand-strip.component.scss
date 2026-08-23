@@ -1,0 +1,33 @@
+.brand-strip {
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand-strip__label {
+  text-align: center;
+  font-size: var(--fs-xsmall);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+}
+
+.brand-strip__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-7);
+}
+
+.brand-strip__name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-muted);
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+    color: var(--color-ink);
+  }
+}

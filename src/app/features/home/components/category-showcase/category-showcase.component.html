@@ -1,0 +1,19 @@
+<section class="container category-showcase">
+  <div class="section-heading">
+    <h2>Shop By Category</h2>
+    <p>Four ways into the collection — start wherever fits your day.</p>
+  </div>
+
+  <div class="category-showcase__grid">
+    @for (category of categories; track category.id) {
+      <a [routerLink]="['/category', category.slug]" class="category-card">
+        <img [src]="category.image" [alt]="category.name" loading="lazy" />
+        <div class="category-card__overlay">
+          <h3>{{ category.name }}</h3>
+          <p>{{ category.description }}</p>
+          <span class="category-card__cta">Shop {{ category.name }} <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+        </div>
+      </a>
+    }
+  </div>
+</section>

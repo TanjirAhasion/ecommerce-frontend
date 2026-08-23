@@ -1,0 +1,30 @@
+<div class="mega-menu" (mouseleave)="closeRequested.emit()">
+  <div class="container mega-menu__inner">
+    <div class="mega-menu__columns">
+      @for (column of menu.columns; track column.heading) {
+        <div class="mega-menu__column">
+          <p class="mega-menu__heading">{{ column.heading }}</p>
+          <ul>
+            @for (link of column.links; track link.label) {
+              <li>
+                <a [routerLink]="link.routerLink" [queryParams]="link.queryParams" (click)="closeRequested.emit()">
+                  {{ link.label }}
+                  @if (link.badge) {
+                    <span class="mega-menu__badge">{{ link.badge }}</span>
+                  }
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    @if (menu.featuredImage; as feature) {
+      <a [routerLink]="feature.routerLink" class="mega-menu__feature" (click)="closeRequested.emit()">
+        <img [src]="feature.url" [alt]="feature.alt" loading="lazy" />
+        <span class="mega-menu__feature-caption">{{ feature.caption }}</span>
+      </a>
+    }
+  </div>
+</div>

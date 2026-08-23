@@ -1,0 +1,8 @@
+<section class="container brand-strip">
+  <p class="brand-strip__label">Trusted Brands</p>
+  <div class="brand-strip__row">
+    @for (brand of brands; track brand.id) {
+      <span class="brand-strip__name">{{ brand.name }}</span>
+    }
+  </div>
+</section>

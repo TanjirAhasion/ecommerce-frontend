@@ -1,0 +1,17 @@
+<section class="container testimonials">
+  <div class="section-heading">
+    <h2>What Customers Say</h2>
+  </div>
+  <div class="testimonials__grid">
+    @for (t of testimonials; track t.id) {
+      <blockquote class="testimonial-card">
+        <app-rating [value]="t.rating" />
+        <p class="testimonial-card__quote">&ldquo;{{ t.quote }}&rdquo;</p>
+        <footer>
+          <span class="testimonial-card__name">{{ t.customerName }}</span>
+          <span class="testimonial-card__location">{{ t.location }}</span>
+        </footer>
+      </blockquote>
+    }
+  </div>
+</section>
