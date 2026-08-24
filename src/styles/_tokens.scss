@@ -6,26 +6,31 @@
 
 :root {
   // ---- Brand ----------------------------------------------------
-  // Deep oxblood accent: reads premium/fashion without leaning on
-  // the generic warm-terracotta-on-cream look. Swap this one value
-  // to re-theme the entire storefront.
-  --color-accent: #6E2A32;
-  --color-accent-dark: #501E24;
-  --color-accent-tint: #F4E7E8;
+  // Arabian midnight / antique gold / ivory: deep night-sky ink,
+  // hand-worn gold, and parchment-warm neutrals — a royal, historical
+  // register rather than a fashion-oxblood one. Swap these values
+  // to re-theme the entire storefront; --color-ink doubles as the
+  // "deep midnight" surface (top bar, footer, hero scrims) so a
+  // single change carries through both text and dark panels.
+  --color-accent: #8B6B21;       // antique gold — AA-safe on both white text and ivory bg
+  --color-accent-dark: #6B4F18;  // pressed/hover gold, darker bronze
+  --color-accent-tint: #F3E6C8;  // pale gold-parchment tint for soft sections
+  --color-gold-soft: #D9BE8F;    // decorative light gold — dividers/icons on dark surfaces
+  --color-burgundy: #6E2430;     // optional royal accent — sale ribbons, third-tone panels
 
   // ---- Neutrals ---------------------------------------------------
-  --color-bg: #FBFAF8;          // page background — warm off-white, not stark white
-  --color-surface: #FFFFFF;      // cards, header
-  --color-ink: #1C1A19;          // primary text — warm near-black, not pure #000
-  --color-muted: #6F6A64;        // secondary text
-  --color-border: #E7E2DC;
-  --color-border-strong: #D3CCC3;
+  --color-bg: #FBF6EC;          // page background — warm ivory/parchment, not stark white
+  --color-surface: #FFFEFB;      // cards, header — soft warm white
+  --color-ink: #14192B;          // primary text + deep-midnight surfaces (top bar, footer)
+  --color-muted: #79705C;        // secondary text — warm sand-brown
+  --color-border: #E7DFCC;
+  --color-border-strong: #D6C9A8;
 
   // ---- Semantic ---------------------------------------------------
-  --color-success: #2F6844;
+  --color-success: #2F6B4A;
   --color-danger: #B3261E;
-  --color-sale: #B3261E;
-  --color-new: #2F6844;
+  --color-sale: var(--color-burgundy);
+  --color-new: #2F6B4A;
   --color-bestseller: var(--color-accent);
 
   // ---- Typography ---------------------------------------------------
@@ -64,11 +69,11 @@
 
 // Dark theme scaffold (Section 31) — populated in a later phase.
 [data-theme='dark'] {
-  --color-bg: #14120F;
-  --color-surface: #1D1A17;
-  --color-ink: #F2EEE9;
-  --color-muted: #A69F96;
-  --color-border: #322D28;
-  --color-border-strong: #443D36;
-  --color-accent-tint: #2A1A1C;
+  --color-bg: #0B1220;
+  --color-surface: #161F33;
+  --color-ink: #F5EFDD;
+  --color-muted: #B8A987;
+  --color-border: #2A3550;
+  --color-border-strong: #3B4768;
+  --color-accent-tint: #2E2411;
 }
